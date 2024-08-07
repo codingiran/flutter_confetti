@@ -296,16 +296,16 @@ class _ConfettiWidgetState extends State<ConfettiWidget>
   @override
   Widget build(BuildContext context) {
     _updatePositionAndSize();
-    return CustomPaint(
-      key: _particleSystemKey,
-      foregroundPainter: ParticlePainter(
-        _animController,
-        strokeWidth: widget.strokeWidth,
-        strokeColor: widget.strokeColor,
-        particles: _particleSystem.particles,
-        paintEmitterTarget: widget.displayTarget,
+    return RepaintBoundary(
+      child: CustomPaint(
+        key: _particleSystemKey,
+        foregroundPainter: ParticlePainter(
+          _animController,
+          particles: _particleSystem.particles,
+          paintEmitterTarget: widget.displayTarget,
+        ),
+        child: widget.child,
       ),
-      child: widget.child,
     );
   }
 

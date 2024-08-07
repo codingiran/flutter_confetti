@@ -156,11 +156,16 @@ class ParticleSystem extends ChangeNotifier {
     }
   }
 
+  // bool _isOutsideOfBorder(Offset particleLocation) {
+  //   final globalParticlePosition = particleLocation + _particleSystemPosition!;
+  //   return (globalParticlePosition.dy >= _bottomBorder) ||
+  //       (globalParticlePosition.dx >= _rightBorder) ||
+  //       (globalParticlePosition.dx <= _leftBorder);
+  // }
+
   bool _isOutsideOfBorder(Offset particleLocation) {
     final globalParticlePosition = particleLocation + _particleSystemPosition!;
-    return (globalParticlePosition.dy >= _bottomBorder) ||
-        (globalParticlePosition.dx >= _rightBorder) ||
-        (globalParticlePosition.dx <= _leftBorder);
+    return (globalParticlePosition.dy >= _bottomBorder);
   }
 
   List<Particle> _generateParticles({int number = 1}) {
